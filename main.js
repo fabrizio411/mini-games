@@ -80,7 +80,13 @@ function gameEnd() {
 
 
 while (player.points < 3 && computer.points < 3) {
-    displayScore();
+    if (player.points === 0 && computer.points === 0) {
+        console.log("ROCK - PAPER - SCISSORS");
+        console.log("First one to get three points win!");
+    } else {
+        displayScore();
+    }
+    
 
     player.round_choice = randomChoice();
     computer.round_choice = randomChoice();
