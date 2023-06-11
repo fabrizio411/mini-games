@@ -48,13 +48,19 @@ function checkResult(player_choice, computer_choice) {
     }
 }
 
+function displayScore() {
+    console.log("")
+    console.log("Score")
+    console.log(`Player: ${player.points}`)
+    console.log(`Computer: ${computer.points}`)
+    console.log("")
+}
+
 
 
 
 while (player.points < 3 && computer.points < 3) {
-    console.log("Score")
-    console.log(`Player: ${player.points}`)
-    console.log(`Computer: ${computer.points}`)
+    displayScore()
 
     player.round_choice = "rock";
     computer.round_choice = "paper";
@@ -65,16 +71,10 @@ while (player.points < 3 && computer.points < 3) {
     checkResult(p_choice, c_choice)
 
     if (computer.points === 3) {
-        console.log("Final Score")
-        console.log(`Player: ${player.points}`)
-        console.log(`Computer: ${computer.points}`)
-        console.log("")
+        displayScore()
         console.log("You lost the game")
     } else if (player.points === 3) {
-        console.log("Final Score")
-        console.log(`Player: ${player.points}`)
-        console.log(`Computer: ${computer.points}`)
-        console.log("")
+        displayScore()
         console.log("You WON!!!")
     }
 }
