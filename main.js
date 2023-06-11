@@ -10,6 +10,7 @@ const computer = {
     round_choice: ""
 }
 
+
 function checkResult(player_choice, computer_choice) {
     if (player_choice === "rock") {
         if (computer_choice === "rock") {
@@ -56,6 +57,11 @@ function displayScore() {
     console.log("")
 }
 
+function displayChoices() {
+    console.log(`Your choice: ${player.round_choice}`)
+    console.log(`Computer choice: ${computer.round_choice}`)
+}
+
 
 
 
@@ -67,6 +73,8 @@ while (player.points < 3 && computer.points < 3) {
 
     let p_choice = player.round_choice;
     let c_choice = computer.round_choice;
+
+    displayChoices()
 
     checkResult(p_choice, c_choice)
 
