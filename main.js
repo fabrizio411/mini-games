@@ -62,7 +62,15 @@ function displayChoices() {
     console.log(`Computer choice: ${computer.round_choice}`)
 }
 
-
+function gameEnd() {
+    if (computer.points === 3) {
+        displayScore()
+        console.log("You lost the game")
+    } else if (player.points === 3) {
+        displayScore()
+        console.log("You WON!!!")
+    }
+}
 
 
 while (player.points < 3 && computer.points < 3) {
@@ -78,13 +86,7 @@ while (player.points < 3 && computer.points < 3) {
 
     checkResult(p_choice, c_choice)
 
-    if (computer.points === 3) {
-        displayScore()
-        console.log("You lost the game")
-    } else if (player.points === 3) {
-        displayScore()
-        console.log("You WON!!!")
-    }
+    gameEnd()
 }
 
 
