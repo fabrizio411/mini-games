@@ -1,6 +1,6 @@
 const player = {
     lives: 6,
-    wrong_guesses: "",
+    wrong_guesses: [],
 }
 
 const words = ["prueba", "intento"];
@@ -64,7 +64,7 @@ while (player.lives > 0) {
 
     // 2.2- Elejir letra (DESARROLLO)
     // let guess = letters[Math.floor(Math.random() * letters.length)]
-    let guess = z;
+    let guess = "z";
 
     // 2.3- Checkear si la letra elejida esta en la palabra.
     // Si no esta agregar esa letra a wrong_guesses y restar vida
