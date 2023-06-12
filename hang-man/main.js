@@ -35,9 +35,7 @@ function letterCheck(letter) {
         }
 
         return hidden_array;
-    } else {
-        return hidden_array
-    }
+    } 
 }
 
 
