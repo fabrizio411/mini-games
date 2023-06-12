@@ -52,10 +52,13 @@ let game_word = words[Math.floor(Math.random() * words.length)];
 
 // 2- Bucle while para jugar hasta quedar sin vidas
 while (player.lives > 0) {
-    // 2.1 - Mostar la palabra oculta
-    
 
-    // 2.2- Elejir letra
+    // 2.1 - Mostar la palabra oculta
+    let game_word_hidden = hideWord(game_word, "string");
+    console.log(game_word_hidden);
+
+    // 2.2- Elejir letra (DESARROLLO)
+    let guess = letters[Math.floor(Math.random() * letters.length)]
 
     // 2.3- Checkear si la letra elejida esta en la palabra.
     // Si no esta agregar esa letra a wrong_guesses y restar vida
