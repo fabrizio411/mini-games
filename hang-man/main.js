@@ -14,7 +14,7 @@ function hideWord(word, format_inString) {
     }
 
     if (format_inString === "string") {
-        word_hidden = " ".join(hidden_array);
+        word_hidden = hidden_array.join(" ");
         return word_hidden;
     } else if (format_inString === "array") {
         return hidden_array;
@@ -63,7 +63,8 @@ while (player.lives > 0) {
     console.log(game_word_hidden);
 
     // 2.2- Elejir letra (DESARROLLO)
-    let guess = letters[Math.floor(Math.random() * letters.length)]
+    // let guess = letters[Math.floor(Math.random() * letters.length)]
+    let guess = z;
 
     // 2.3- Checkear si la letra elejida esta en la palabra.
     // Si no esta agregar esa letra a wrong_guesses y restar vida
