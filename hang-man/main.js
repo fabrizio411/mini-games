@@ -34,7 +34,7 @@ function letterCheck(letter) {
             }
         }
 
-        return hidden_array;
+        return hidden_array.join(" ");
     } else {
         player.wrong_guesses.push(letter);
         player.lives -= 1;
@@ -54,17 +54,17 @@ const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm'
 
 // 1- Elejir palabra para el juego
 let game_word = words[Math.floor(Math.random() * words.length)];
+let game_word_hidden = hideWord(game_word, "string");
 
 // 2- Bucle while para jugar hasta quedar sin vidas
 while (player.lives > 0) {
 
     // 2.1 - Mostar la palabra oculta
-    let game_word_hidden = hideWord(game_word, "string");
     console.log(game_word_hidden);
 
     // 2.2- Elejir letra (DESARROLLO)
     // let guess = letters[Math.floor(Math.random() * letters.length)]
-    let guess = "z";
+    let guess = "e";
 
     // 2.3- Checkear si la letra elejida esta en la palabra.
     // Si no esta agregar esa letra a wrong_guesses y restar vida
@@ -74,6 +74,14 @@ while (player.lives > 0) {
     } else {
         letterCheck(guess);
     }
+
+
+    player.lives -= 1
 }
 
 // 3- Motstrar mensaje de victoria o derrota
+if (player.lives > 0) {
+    console.log("You win")
+} else {
+    console.log("You loose")
+}
