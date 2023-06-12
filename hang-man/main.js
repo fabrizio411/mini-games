@@ -26,19 +26,18 @@ function hideWord(word, format_inString) {
 function letterCheck(letter) {
     if (game_word.includes(letter)) {
         let word_array = game_word.split("");
-        let hidden_array = hideWord(game_word, "array");
         
         for (let i = 0; i < word_array.length; i++) {
             if (letter === word_array[i]) {
                 hidden_array[i] = letter;
             }
         }
-
+        
         return hidden_array.join(" ");
     } else {
         player.wrong_guesses.push(letter);
         player.lives -= 1;
-
+        
         return false;
     }
 }
@@ -55,6 +54,8 @@ const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm'
 // 1- Elejir palabra para el juego
 let game_word = words[Math.floor(Math.random() * words.length)];
 let game_word_hidden = hideWord(game_word, "string");
+
+let hidden_array = hideWord(game_word, "array");
 
 // 2- Bucle while para jugar hasta quedar sin vidas
 while (player.lives > 0) {
