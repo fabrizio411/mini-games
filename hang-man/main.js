@@ -35,7 +35,10 @@ function letterCheck(letter) {
         }
 
         return hidden_array;
-    } 
+    } else {
+        player.wrong_guesses.push(letter);
+        player.lives -= 1;
+    }
 }
 
 
