@@ -9,7 +9,7 @@ const words = ["prueba", "intento"];
 // Funcion devuelve una string oculta o un array ocurlo segun el formato especificado
 function hideWord(word, format_inString) {
     let hidden_array = [];
-    for (let i = 0; i <= word.length; i++) {
+    for (let i = 0; i < word.length; i++) {
         hidden_array[i] = "_";
     }
 
@@ -58,7 +58,7 @@ let game_word_hidden = hideWord(game_word, "string");
 let hidden_array = hideWord(game_word, "array");
 
 // 2- Bucle while para jugar hasta quedar sin vidas
-while (player.lives > 0) {
+while (player.lives > 0 || game_word.split(" ") === game_word_hidden.split("")) {
 
     // 2.1 - Mostar la palabra oculta
     console.log(game_word_hidden);
