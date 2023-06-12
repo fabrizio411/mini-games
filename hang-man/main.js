@@ -8,19 +8,37 @@ const words = ["prueba", "intento"];
 
 // Funcion devuelve una string oculta o un array ocurlo segun el formato especificado
 function hideWord(word, format_inString) {
-    let hidden_array = []
+    let hidden_array = [];
     for (let i = 0; i <= word.length; i++) {
-        hidden_array[i] = "_"
+        hidden_array[i] = "_";
     }
 
     if (format_inString === "string") {
-        word_hidden = " ".join(hidden_array)
-        return word_hidden
+        word_hidden = " ".join(hidden_array);
+        return word_hidden;
     } else if (format_inString === "array") {
-        return hidden_array
+        return hidden_array;
     }
 }
 
+
+// Checkea la lettra elejida y actualiza la palabra oculta
+function letterCheck(letter) {
+    if (game_word.includes(letter)) {
+        let word_array = game_word.split("");
+        let hidden_array = hideWord(game_word, "array");
+        
+        for (let i = 0; i < word_array.length; i++) {
+            if (letter === word_array[i]) {
+                hidden_array[i] = letter;
+            }
+        }
+
+        return hidden_array;
+    } else {
+        return hidden_array
+    }
+}
 
 
 
@@ -37,6 +55,7 @@ let game_word = words[Math.floor(Math.random() * words.length)];
 // 2- Bucle while para jugar hasta quedar sin vidas
 while (player.lives > 0) {
     // 2.1 - Mostar la palabra oculta
+    
 
     // 2.2- Elejir letra
 
