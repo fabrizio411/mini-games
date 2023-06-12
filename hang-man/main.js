@@ -12,8 +12,8 @@ const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm'
 
 
 
-
 // 1- Elejir palabra para el juego
+let game_word = words[Math.floor(Math.random() * words.length)];
 
 // 2- Bucle while para jugar hasta quedar sin vidas
 while (player.lives > 0) {
