@@ -38,7 +38,7 @@ function letterCheck(letter) {
     } else {
         player.wrong_guesses.push(letter);
         player.lives -= 1;
-        
+
         return false;
     }
 }
@@ -63,20 +63,17 @@ while (player.lives > 0) {
     console.log(game_word_hidden);
 
     // 2.2- Elejir letra (DESARROLLO)
-    // let guess = letters[Math.floor(Math.random() * letters.length)]
-    let guess = "e";
+    let guess = letters[Math.floor(Math.random() * letters.length)]
+ 
 
     // 2.3- Checkear si la letra elejida esta en la palabra.
     // Si no esta agregar esa letra a wrong_guesses y restar vida
     // 2.4- Revelar las letras correctas en la palabra oculta
     if (letterCheck(guess)) {
         game_word_hidden = letterCheck(guess);
-    } else {
-        letterCheck(guess);
-    }
+    } 
 
 
-    player.lives -= 1
 }
 
 // 3- Motstrar mensaje de victoria o derrota
