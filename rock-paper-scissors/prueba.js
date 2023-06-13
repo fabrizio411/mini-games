@@ -16,7 +16,7 @@ rockBTN.addEventListener("click", () => {
     } else if (computer_choice === "paper") {
         resultado.innerHTML = "Loose";
     }else if (computer_choice === "scissors") {
-        resultado.innerHTML = "Win";
+        resultado.innerHTML = "You Win!";
     }
 })
 
@@ -27,7 +27,7 @@ paperBTN.addEventListener("click", () => {
     } else if (computer_choice === "paper") {
         resultado.innerHTML = "Draw";
     }else if (computer_choice === "scissors") {
-        resultado.innerHTML = "Loose";
+        resultado.innerHTML = "you Lost.";
     }
 })
 
@@ -38,7 +38,7 @@ scissorsBTN.addEventListener("click", () => {
     } else if (computer_choice === "paper") {
         resultado.innerHTML = "Win";
     }else if (computer_choice === "scissors") {
-        resultado.innerHTML = "Draw";
+        resultado.innerHTML = "You Tied.";
     }
 })
 
