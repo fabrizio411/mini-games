@@ -134,6 +134,12 @@ main {
     grid-row: 3 / 4;
 }
 
+.computer-choice #computer-choice {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
 
 .score {
     grid-column: 6 / 7;
