@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font: inherit;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    background-color: #ff9c78;
+}
+
+main {
+    height: 500px;
+    width: 900px;
+    background-color: #ff9c78;
+    display: grid;
+    grid-template-columns: auto 1fr auto 1fr auto 1fr auto;
+    grid-template-rows: 1fr 1fr 1fr;
+    place-items: center;
+    padding: 0 100px;
+    border-radius: 10px;
+    box-shadow:  6px 6px 12px #de8868,
+             -6px -6px 12px #ffb088;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    width: 100%;
+    letter-spacing: .5rem;
+    text-align: center;
+}
+
+.h1-1 {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    margin-left: 8px;
+}
+.h1-2 {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+.h1-3 {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+    margin-left: 8px;
+}
+.h1-4 {
+    grid-column: 4 / 5;
+    grid-row: 1 / 2;
+}
+.h1-5 {
+    grid-column: 5 / 6;
+    grid-row: 1 / 2;
+    margin-left: 8px;
+}
+.h1-6 {
+    grid-column: 6 / 7;
+    grid-row: 1 / 2;
+}
+.h1-7 {
+    grid-column: 7 / 8;
+    grid-row: 1 / 2;
+    margin-left: 8px;
+}
+
+
+
+
+
+
+
+
+
+
+button {
+    background-color: transparent;
+    border: none;
+    padding: 2rem;
+}
+
+button:hover {
+    opacity: 0.5;
+}
+
+button img {
+    max-height: 100px;
+}
+
+#rock {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+
+#paper {
+    grid-column: 4 / 5;
+    grid-row: 2 / 3;
+}
+
+#scissors {
+    grid-column: 6 / 7;
+    grid-row: 2 / 3;
+}
+
+
+
+#resultado {
+    grid-column: 4 / 5;
+    grid-row: 3 / 4;
+}
