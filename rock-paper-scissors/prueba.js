@@ -5,40 +5,43 @@ const resultado = document.getElementById("resultado");
 
 
 const options = ["rock", "paper", "scissors"]
-let computer_choice = options[Math.floor(Math.random() * options.length)];
+let computer_choice = "";
 let player_choice = "";
 
 
 rockBTN.addEventListener("click", () => {
+    computer_choice = options[Math.floor(Math.random() * options.length)];
     player_choice = "rock";
     if (computer_choice === "rock") {
-        resultado.innerHTML = "Draw";
+        resultado.innerHTML = "You Tied";
     } else if (computer_choice === "paper") {
-        resultado.innerHTML = "Loose";
+        resultado.innerHTML = "You Lost";
     }else if (computer_choice === "scissors") {
         resultado.innerHTML = "You Win!";
     }
 })
 
 paperBTN.addEventListener("click", () => {
+    computer_choice = options[Math.floor(Math.random() * options.length)];
     player_choice = "paper";
     if (computer_choice === "rock") {
-        resultado.innerHTML = "Win";
+        resultado.innerHTML = "You Win!";
     } else if (computer_choice === "paper") {
-        resultado.innerHTML = "Draw";
+        resultado.innerHTML = "You Tied";
     }else if (computer_choice === "scissors") {
-        resultado.innerHTML = "you Lost.";
+        resultado.innerHTML = "You Lost";
     }
 })
 
 scissorsBTN.addEventListener("click", () => {
+    computer_choice = options[Math.floor(Math.random() * options.length)];
     player_choice = "scissors";
     if (computer_choice === "rock") {
-        resultado.innerHTML = "Loose";
+        resultado.innerHTML = "You Lost";
     } else if (computer_choice === "paper") {
-        resultado.innerHTML = "Win";
+        resultado.innerHTML = "You Win!";
     }else if (computer_choice === "scissors") {
-        resultado.innerHTML = "You Tied.";
+        resultado.innerHTML = "You Tied";
     }
 })
 
