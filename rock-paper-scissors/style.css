@@ -17,8 +17,8 @@ body {
 }
 
 main {
-    height: 500px;
-    width: 900px;
+    max-height: 500px;
+    max-width: 900px;
     background-color: #ff9c78;
     display: grid;
     grid-template-columns: auto 1fr auto 1fr auto 1fr auto;
@@ -161,3 +161,86 @@ main {
 }
 
 
+
+
+@media (max-width: 960px) {
+    main {
+        margin: 1rem;
+        width: 90%;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(3, 33.34%);
+        gap: 0;
+    }
+
+    .h1-1,.h1-2,.h1-3,.h1-4,.h1-5,.h1-6,.h1-7 {
+        opacity: 0;
+        grid-row: 4 / 5;
+    }
+
+    .h1-0 {
+        grid-column: 1 / 4;
+        grid-row: 1 / 2;
+        letter-spacing: 0;
+    }
+
+    .title {
+        font-size: 1rem;
+    }
+
+
+
+
+    .button img {
+        height: 50px;
+    }
+
+    #rock {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+    }
+    
+    #paper {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+    }
+    
+    #scissors {
+        grid-column: 3 / 4;
+        grid-row: 2 / 3;
+    }
+
+
+
+    .computer-choice {
+        grid-column: 1 / 2;
+        grid-row: 3 / 4;
+        text-align: center;
+        font-size: .7rem;
+    }
+
+    .resultado {
+        grid-column: 2 / 3;
+        grid-row: 3 / 4;
+        font-size: .7rem;
+    }
+
+    .score {
+        grid-column: 3 / 4;
+        grid-row: 3 / 4;
+        font-size: .7rem;
+    }
+
+    
+    .resultado #resultado {
+        font-size: 1.5rem;
+    }
+
+    .score #score {
+        font-size: 1rem;
+    }
+
+    .computer-choice #computer-choice {
+        font-size: 1rem;
+    }
+}
