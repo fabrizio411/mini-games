@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comforter&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    color: #222;
+    background: linear-gradient(coral, white);
+    position: relative;
+
+}
+
+
+
+header {
+    display: grid;
+    place-items: center;
+    padding: 60px 0;
+}
+
+header .title {
+    font-size: 10rem;
+    font-family: 'Comforter', cursive;
+}
+
+
+
+main {
+    display: grid;
+    place-items: center;
+}
+
+main .link-box {
+    display: grid;
+    grid-template-columns: 300px 300px;
+    grid-template-rows: 200px 200px;
+    gap: 2rem;
+    margin-bottom: 7rem;
+}
+
+main .link-box .link {
+    background: radial-gradient(white, coral);
+    height: 200px;
+    width: 300px;
+    border-radius: 20px;
+    display: grid;
+    place-items: center;
+}
+
+
+
+
+
+
+
+
+footer {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+    font-size: .9rem;
+    font-weight: bold;
+    padding: .5rem;
+    background: rgb(255, 201, 181);
+}
