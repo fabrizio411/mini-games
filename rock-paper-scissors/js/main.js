@@ -39,12 +39,12 @@ paperBTN.addEventListener("click", () => {
     player_choice = "paper";
     if (computer_choice === "rock") {
         resultado.innerHTML = "You Win!";
-        player_score--;
+        player_score++;
     } else if (computer_choice === "paper") {
         resultado.innerHTML = "You Tied";
     }else if (computer_choice === "scissors") {
         resultado.innerHTML = "You Lost";
-        player_score++;
+        player_score--;
     }
     resultado.classList.remove("animation");
     void resultado.offsetWidth;
