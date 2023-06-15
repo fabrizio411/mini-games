@@ -129,11 +129,29 @@ main {
 .account-info .coins {
     color: white; /* CHANGE */
     font-size: .9rem;
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+    font-size: .9rem;
+}
+
+.coins .coins-svg {
+    fill: gold;
+    max-width: 20px;
 }
 
 .account-info .gems {
     color: white; /* CHANGE */
     font-size: .9rem;
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+    font-size: .9rem;
+}
+
+.gems .gems-svg {
+    fill: rgb(67, 228, 174);
+    max-width: 20px;
 }
 
 
@@ -194,6 +212,11 @@ main {
     color: var(--clr-text-lv4);
 }
 
+.menu-nav nav a:hover { 
+    color: var(--clr-text-lv2);
+    transition: .5s;
+}
+
 
 
 .side-bar .container .extra-menu {
@@ -203,4 +226,17 @@ main {
 
 .side-bar .extra-menu svg {
     fill: var(--clr-text-lv4);
+}
+
+.extra-menu a:hover svg{
+    fill: var(--clr-text-lv2);
+    transition: .5s;
+}
+
+
+
+/* CURRENT PAGE MENU STRYLES */
+#current-page {
+    color: var(--clr-text-lv2);
+    fill: var(--clr-text-lv2);
 }
