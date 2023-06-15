@@ -33,7 +33,7 @@
 }
 
 body {
-    height: 100vh;
+    min-height: 100vh;
     font-family: 'Inter', sans-serif;
     background-color: lightgray;
 }
@@ -51,6 +51,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100%;
+    position: relative;
 }
 
 .header .container .title {
@@ -88,7 +89,11 @@ main {
 
 .side-bar .container {
     padding: var(--sidebar-inner-padding);
-
+    padding-bottom: calc(var(--sidebar-inner-padding) - .5rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100% - 15rem);
 }
 
 
@@ -182,4 +187,15 @@ main {
     padding: .75rem;
     text-decoration: none;
     color: var(--clr-text-lv4);
+}
+
+
+
+.side-bar .container .extra-menu {
+    display: flex;
+    justify-content: space-around;
+}
+
+.side-bar .extra-menu svg {
+    fill: var(--clr-text-lv4);
 }
