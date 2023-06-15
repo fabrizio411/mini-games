@@ -11,6 +11,8 @@
     --clr-text-lv2: #d3d3d3;
     --clr-text-lv3: #969799;
     --clr-text-lv4: #6d6d6d;
+    --clr-text-lv5: #474747;
+
 
 
     --fw-light: 300;
@@ -41,7 +43,7 @@ body {
 /* HEADER */
 .header {
     background-color: var(--clr-header-bg); 
-    height: 4rem;
+    height: 3rem;
 }
 
 .header .container {
@@ -52,7 +54,7 @@ body {
 }
 
 .header .container .title {
-    font-size: 3rem;
+    font-size: 2.25rem;
     font-weight: var(--fs-bold);
     letter-spacing: .1rem;
     color: var(--clr-header-font); 
@@ -60,10 +62,15 @@ body {
 
 
 
+/* MAIN */
+main {
+    height: calc(100% - 3rem);
+}
+
 /* SIDE BAR */
 .side-bar {
     background-color: var(--clr-sidebar-bg); 
-    width: 20rem;
+    width: 15rem;
     height: 100%;
 }
 
@@ -71,36 +78,36 @@ body {
 
 .side-bar .image-div {
     background: grey; /*CHANGE*/
-    height: 20rem;
-    width: 20rem;
+    height: 15rem;
+    width: 15rem;
     border: 2px solid white;
     border-radius: 2px;
 }
 
 
 
-.side-bar .player-info {
+.side-bar .container {
     padding: var(--sidebar-inner-padding);
 
 }
 
 
 
-.side-bar .player-info .account-info {
+.side-bar .container .account-info {
     display: flex;
     flex-direction: column;
 }
 
 .account-info .username {
-    font-size: 1.75rem;
+    font-size: 1.25rem;
     font-weight: var(--fs-semi-bold);
-    letter-spacing: .1rem;
     color: var(--clr-text-lv1);
 }
 
 .account-info .level {
     font-weight: var(--fs-light);
     color: var(--clr-text-lv4);
+    font-size: .8rem;
 }
 
 .account-info .currency {
@@ -111,38 +118,48 @@ body {
 
 .account-info .coins {
     color: white; /* CHANGE */
+    font-size: .9rem;
 }
 
 .account-info .gems {
     color: white; /* CHANGE */
+    font-size: .9rem;
 }
 
 
 
-.side-bar .player-info .player-status {
+.side-bar .container .player-status {
     /* background-color: rgb(45, 189, 52);  */
     display: flex;
     flex-direction: column;
+    padding-top: .5rem;
 }
 
 .name {
     padding-left: .25rem;
     padding-bottom: .1rem;
     color: var(--clr-text-lv2);
+    font-size: .8rem;
+    opacity: .75;
 }
 
 .bar {
-    height: .75rem;
+    height: .55rem;
     border-radius: 1rem;
 }
 .player-status .health-box .bar {
     background-color: red;
 }
 
+.player-status .exp-box .bar {
+    background-color: gold;
+}
+
 .status {
     text-align: right;
     padding-right: .25rem;
-    font-size: .9rem;
+    padding-top: .05rem;
+    font-size: .7rem;
     font-weight: var(--fs-light);
     color: var(--clr-text-lv4);
 
@@ -150,8 +167,19 @@ body {
 
 
 
+/* side-bar MENU NAV */
+.side-bar .menu-nav {
+    padding: 1.5rem 0;
+}
 
+.menu-nav nav hr {
+    color: var(--clr-text-lv5);
+    border-radius: 1rem;
+}
 
-.player-status .exp-box .bar {
-    background-color: gold;
+.menu-nav nav a {
+    display: block;
+    padding: .75rem;
+    text-decoration: none;
+    color: var(--clr-text-lv4);
 }
