@@ -71,10 +71,13 @@ body {
 /* MAIN */
 main {
     height: calc(100% - 3rem);
+    display: grid;
+    grid-template-columns: 15rem auto;
 }
 
 /* SIDE BAR */
 .side-bar {
+    grid-column: 1 / 2;
     background-color: var(--clr-sidebar-bg); 
     width: 15rem;
     height: 100%;
@@ -94,7 +97,7 @@ main {
 
 .side-bar .container {
     padding: var(--sidebar-inner-padding);
-    padding-bottom: calc(var(--sidebar-inner-padding) - .5rem);
+    padding-bottom: calc(var(--sidebar-inner-padding) - 1rem);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
