@@ -106,3 +106,18 @@ main {
     flex-direction: column;
     justify-content: space-evenly;
 }
+
+.info-bar .subtitle {
+    color: var(--clr-text-lv2);
+}
+
+.info-bar .enemy-info-box .enemy-data .enemy-name {
+    font-size: .9rem;
+    color: var(--clr-text-lv3);
+}
+
+.info-bar .enemy-info-box .enemy-data .enemy-level {
+    font-size: .75rem;
+    color: var(--clr-text-lv4);
+}
+
