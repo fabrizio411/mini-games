@@ -114,7 +114,7 @@ main .side-bar .container .player-status .health-box .bar {
   background-color: rgb(202, 49, 49);
 }
 main .side-bar .container .player-status .exp-box .bar {
-  background-color: rgb(245, 235, 99);
+  background-color: red;
 }
 main .side-bar .container .menu-nav {
   padding: 1.5rem 0;
