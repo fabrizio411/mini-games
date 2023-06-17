@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap');
+
+
+
+
+$clr-header-bg: #27282b;
+$clr-header-font: #7c7c7c;
+$clr-sidebar-bg: #232325;
+$clr-infobar-bg: #343536;
+
+$clr-text-lv1: #fdfeff;
+$clr-text-lv2: #d3d3d3;
+$clr-text-lv3: #969799;
+$clr-text-lv4: #6d6d6d;
+$clr-text-lv5: #474747;
+
+$clr-coins: gold;
+$clr-gems: rgb(67, 228, 174);
+
+$clr-health-bar: rgb(202, 49, 49);
+$clr-exp-bar: rgb(245, 235, 99);
+
+$fw-light: 300;
+$fw-regular: 400;
+$fw-semi-bold: 500;
+$fw-bold: 700;
+
+$sidebar-inner-padding: 1.5rem;
+
+
+// HEADER
+.header {
+    background-color: $clr-header-bg; 
+    height: 3rem;
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        position: relative;
+
+        .title {
+            font-size: 2.25rem;
+            font-weight: $fw-bold;
+            letter-spacing: .1rem;
+            color: $clr-header-font; 
+        }
+    }
+}
+
+
+// SIDE BAR MENU
+main {
+    height: calc(100% - 3rem);
+    display: grid;
+    grid-template-columns: 15rem auto;
+
+    .side-bar {
+        grid-column: 1 / 2;
+        background-color: $clr-sidebar-bg; 
+        width: 15rem;
+        height: 100%;
+
+        .image-div {
+            background: grey;  // CHANGE / Temporal
+            height: 15rem;
+            width: 15rem;
+            border: 2px solid white;
+            border-radius: 2px;
+        }
+
+        .container {
+            padding: $sidebar-inner-padding;
+            padding-bottom: calc($sidebar-inner-padding - 1rem);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: calc(100% - 15rem);
+
+            .account-info {
+                display: flex;
+                flex-direction: column;
+
+                .username {
+                    font-size: 1.25rem;
+                    font-weight: $fw-semi-bold;
+                    color: $clr-text-lv1;
+                }
+
+                .level {
+                    font-weight: $fw-light;
+                    color: $clr-text-lv4;
+                    font-size: .8rem;
+                }
+
+                .currency {
+                    display: flex;
+                    gap: 1rem;
+                    justify-content: flex-end;
+
+                    .coins {
+                        color: $clr-text-lv2;
+                        font-size: .9rem;
+                        display: flex;
+                        align-items: center;
+                        gap: .3rem;
+                        font-size: .9rem;
+
+                        .coins-svg {
+                            fill: gold;
+                            max-width: 20px;
+                        }
+                    }
+
+                    .gems {
+                        color: $clr-text-lv2;
+                        font-size: .9rem;
+                        display: flex;
+                        align-items: center;
+                        gap: .3rem;
+                        font-size: .9rem;
+
+                        .gems-svg {
+                            fill: rgb(67, 228, 174);
+                            max-width: 20px;
+                        }
+                    }
+                }
+            }
+
+            .player-status {
+                display: flex;
+                flex-direction: column;
+                padding-top: .5rem;
+
+                .name {
+                    padding-left: .25rem;
+                    padding-bottom: .1rem;
+                    color: $clr-text-lv2;
+                    font-size: .8rem;
+                    opacity: .75;
+                }
+
+                .bar {
+                    height: .55rem;
+                    border-radius: 1rem;
+                }
+
+                .status {
+                    text-align: right;
+                    padding-right: .25rem;
+                    padding-top: .05rem;
+                    font-size: .7rem;
+                    font-weight: $fw-light;
+                    color: $clr-text-lv4;
+                }
+
+                .health-box {
+                    .bar {
+                        background-color: $clr-health-bar
+                    }
+                }
+
+                .exp-box {
+                    .bar {
+                        background-color: $clr-exp-bar;
+                    }
+                }
+            }
+
+            .menu-nav {
+                padding: 1.5rem 0;
+    
+                nav {
+                    hr {
+                        color: $clr-text-lv5;
+                        border-radius: 1rem;
+                    }
+    
+                    a {
+                        display: block;
+                        padding: .75rem;
+                        text-decoration: none;
+                        color: $clr-text-lv4;
+                        font-weight: $fw-semi-bold;
+    
+                        &:hover {
+                            color: $clr-text-lv2;
+                            transition: .5s;
+                        }
+                    }
+                }
+            }
+
+            .extra-menu {
+                display: flex;
+                justify-content: space-around;
+
+                svg {
+                    fill: $clr-text-lv4;
+
+                    &:hover {
+                        fill: var(--clr-text-lv2);
+                        transition: .5s;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+#current-page {
+    color: $clr-text-lv2;
+    fill: $clr-text-lv2;
+}
