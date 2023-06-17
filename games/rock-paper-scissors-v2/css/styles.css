@@ -1,4 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+body {
+  height: 100vh;
+  font-family: "Inter", sans-serif;
+}
+
+@media (max-height: 730px) {
+  body {
+    height: 100%;
+  }
+}
 main {
   grid-template-columns: 15rem auto 15rem;
 }
@@ -102,6 +119,4 @@ main .info-bar .info-box .loot-info-box .show-loot:hover {
 main .info-bar .info-box .checkpoint-info-box .checkpoint-info {
   font-size: 0.9rem;
   color: #969799;
-}
-
-/*# sourceMappingURL=styles.css.map */
+}/*# sourceMappingURL=styles.css.map */

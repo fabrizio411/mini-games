@@ -1,0 +1,171 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+body {
+  height: 100vh;
+  font-family: "Inter", sans-serif;
+}
+
+@media (max-height: 730px) {
+  body {
+    height: 100%;
+  }
+}
+.header {
+  background-color: #27282b;
+  height: 3rem;
+}
+.header .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: relative;
+}
+.header .container .title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  color: #7c7c7c;
+}
+
+main {
+  height: calc(100% - 3rem);
+  display: grid;
+  grid-template-columns: 15rem auto;
+}
+main .side-bar {
+  grid-column: 1/2;
+  background-color: #232325;
+  width: 15rem;
+  height: 100%;
+}
+main .side-bar .image-div {
+  background: grey;
+  height: 15rem;
+  width: 15rem;
+  border: 2px solid white;
+  border-radius: 2px;
+}
+main .side-bar .container {
+  padding: 1.5rem;
+  padding-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100% - 15rem);
+}
+main .side-bar .container .account-info {
+  display: flex;
+  flex-direction: column;
+}
+main .side-bar .container .account-info .username {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #fdfeff;
+}
+main .side-bar .container .account-info .level {
+  font-weight: 300;
+  color: #6d6d6d;
+  font-size: 0.8rem;
+}
+main .side-bar .container .account-info .currency {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+main .side-bar .container .account-info .currency .coins {
+  color: #d3d3d3;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+}
+main .side-bar .container .account-info .currency .coins .coins-svg {
+  fill: gold;
+  max-width: 20px;
+}
+main .side-bar .container .account-info .currency .gems {
+  color: #d3d3d3;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+}
+main .side-bar .container .account-info .currency .gems .gems-svg {
+  fill: rgb(67, 228, 174);
+  max-width: 20px;
+}
+main .side-bar .container .player-status {
+  display: flex;
+  flex-direction: column;
+  padding-top: 0.5rem;
+}
+main .side-bar .container .player-status .name {
+  padding-left: 0.25rem;
+  padding-bottom: 0.1rem;
+  color: #d3d3d3;
+  font-size: 0.8rem;
+  opacity: 0.75;
+}
+main .side-bar .container .player-status .bar {
+  height: 0.55rem;
+  border-radius: 1rem;
+}
+main .side-bar .container .player-status .status {
+  text-align: right;
+  padding-right: 0.25rem;
+  padding-top: 0.05rem;
+  font-size: 0.7rem;
+  font-weight: 300;
+  color: #6d6d6d;
+}
+main .side-bar .container .player-status .health-box .bar {
+  background-color: rgb(202, 49, 49);
+}
+main .side-bar .container .player-status .exp-box .bar {
+  background-color: rgb(245, 235, 99);
+}
+main .side-bar .container .menu-nav {
+  padding: 1.5rem 0;
+}
+main .side-bar .container .menu-nav nav hr {
+  color: #474747;
+  border-radius: 1rem;
+}
+main .side-bar .container .menu-nav nav a {
+  display: block;
+  padding: 0.75rem;
+  text-decoration: none;
+  color: #6d6d6d;
+  font-weight: 500;
+}
+main .side-bar .container .menu-nav nav a:hover {
+  color: #d3d3d3;
+  transition: 0.5s;
+}
+main .side-bar .container .extra-menu {
+  display: flex;
+  justify-content: space-around;
+}
+main .side-bar .container .extra-menu svg {
+  fill: #6d6d6d;
+}
+main .side-bar .container .extra-menu svg:hover {
+  fill: var(--clr-text-lv2);
+  transition: 0.5s;
+}
+
+#current-page {
+  color: #d3d3d3;
+  fill: #d3d3d3;
+}
+
+/*# sourceMappingURL=styles.css.map */

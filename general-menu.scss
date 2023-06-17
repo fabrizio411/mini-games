@@ -201,7 +201,7 @@ main {
                     fill: $clr-text-lv4;
 
                     &:hover {
-                        fill: var(--clr-text-lv2);
+                        fill: $clr-text-lv2;
                         transition: .5s;
                     }
                 }
