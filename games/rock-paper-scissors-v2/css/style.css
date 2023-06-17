@@ -109,7 +109,11 @@ main {
 
 .info-bar .subtitle {
     color: var(--clr-text-lv2);
+    font-weight: var(--fw-semi-bold);
+    margin-bottom: .75rem;
 }
+
+
 
 .info-bar .enemy-info-box .enemy-data .enemy-name {
     font-size: .9rem;
@@ -121,3 +125,46 @@ main {
     color: var(--clr-text-lv4);
 }
 
+.info-box .enemy-info-box .enemy-drops-box {
+    display: flex;
+    align-items: center;
+    color: var(--clr-text-lv3);
+    font-size: .9rem;
+    margin-top: .5rem;
+    fill: var(--clr-text-lv4);
+}
+
+.enemy-info-box .enemy-drops-box button {
+    border: none;
+    background-color: transparent;
+}
+
+.enemy-info-box .enemy-drops-box button:hover svg {
+    fill: var(--clr-text-lv3);
+}
+
+
+
+.info-box .loot-info-box .info-loot {
+    color: var(--clr-text-lv3);
+    font-size: .9rem;
+}
+
+.info-box .loot-info-box .show-loot {
+    margin-top: .5rem;
+    border: none;
+    background-color: transparent;
+    color: var(--clr-text-lv3);
+    font-size: .9rem;
+}
+
+.info-box .loot-info-box .show-loot:hover {
+    color: var(--clr-text-lv2);
+}
+
+
+
+.info-box .checkpoint-info-box .checkpoint-info {
+    font-size: .9rem;
+    color: var(--clr-text-lv3);
+}

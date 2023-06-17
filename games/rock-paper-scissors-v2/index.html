@@ -90,12 +90,12 @@
         <div class="enemy-info-box">
           <h3 class="subtitle">Enemy:</h3>
           <div class="enemy-data">
-            <p class="enemy-name">-enemyname-</p>
-            <p class="enemy-level">Lvl. 0</p>
+            <p class="enemy-name">-enemyname-</p> <!-- JS -->
+            <p class="enemy-level">Lvl. 0</p> <!-- JS -->
           </div>
-          <div>
-            <p>Possible Drops</p>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z"></path></svg>
+          <div class="enemy-drops-box">
+            <p>Possible Drops</p> <!-- JS -->
+            <button><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z"></path></svg></button>
           </div>
         </div>
         <hr>
@@ -103,18 +103,18 @@
         <div class="loot-info-box">
           <h3 class="subtitle">Loot:</h3>
           <div>
-            <div>Loot 1</div> <!-- JS -->
-            <div>Loot 2</div> <!-- JS -->
-            <div>Loot 3</div> <!-- JS -->
-            <div>Loot 4</div> <!-- JS -->
-            <div><p>Show all.</p></div>
+            <div class="info-loot">Loot 1</div> <!-- JS -->
+            <div class="info-loot">Loot 2</div> <!-- JS -->
+            <div class="info-loot">Loot 3</div> <!-- JS -->
+            <div class="info-loot">Loot 4</div> <!-- JS -->
+            <button class="show-loot">Show all</button>
           </div>
         </div>
         <hr>
 
-        <div>
-          <h3 class="subtitle">Extraction</h3>
-          <p><span>5</span> enemies left</p> <!-- JS -->
+        <div class="checkpoint-info-box">
+          <h3 class="subtitle">Checkpoint:</h3>
+          <p class="checkpoint-info"><span>5</span> enemies left</p> <!-- JS -->
         </div>
       </div>
     </section>
