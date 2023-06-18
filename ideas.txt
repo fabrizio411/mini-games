@@ -1,0 +1,13 @@
+PRIMER JUEGO
+- recarga - disparo -escudo
+
+por turno:
+una de las tres
+precisas recargar para disparar
+escuro protege del disparo
+
+
+modo:
+Facil- Todo aleatorio
+Medio- Recarga primer turno
+Dificil- recarga primer turno, No dispara sin tener balas
