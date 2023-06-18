@@ -215,14 +215,14 @@ function choiceDisplay(Choice, who) {
     // Display de imagen de la eleccion
     if (turn === 1) return "";
     else {
-        if (Choice === "SHOOT" && !canShoot(who)) {
-            return '<img src="./img/crosshair-alt.svg"> <svg class="action-cross" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M777.856 280.192l-33.92-33.952-231.872 231.872-231.84-231.872-33.984 33.888 231.872 231.904-231.84 231.84 33.888 33.984 231.904-231.904 231.84 231.872 33.952-33.888-231.872-231.904z"  /></svg>'
-        } else if (Choice === "SHOOT") {
+        // if (Choice === "SHOOT" && !canShoot(who)) {
+            // return '<img src="./img/crosshair-alt.svg"> <svg class="action-cross" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M777.856 280.192l-33.92-33.952-231.872 231.872-231.84-231.872-33.984 33.888 231.872 231.904-231.84 231.84 33.888 33.984 231.904-231.904 231.84 231.872 33.952-33.888-231.872-231.904z"  /></svg>'
+        if (Choice === "SHOOT") {
             return '<img src="./img/crosshair-alt.svg">';
         } else if (Choice === "SHIELD") {
             return '<img src="./img/shield-alt.svg">';
-        } else if (Choice === "RELOAD" && who.magSize === who.bullets) {
-            return '<img src="./img/bullet-alt.svg"> <svg class="action-cross" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M777.856 280.192l-33.92-33.952-231.872 231.872-231.84-231.872-33.984 33.888 231.872 231.904-231.84 231.84 33.888 33.984 231.904-231.904 231.84 231.872 33.952-33.888-231.872-231.904z"  /></svg>'
+        // } else if (Choice === "RELOAD" && who.magSize === who.bullets) {
+            // return '<img src="./img/bullet-alt.svg"> <svg class="action-cross" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M777.856 280.192l-33.92-33.952-231.872 231.872-231.84-231.872-33.984 33.888 231.872 231.904-231.84 231.84 33.888 33.984 231.904-231.904 231.84 231.872 33.952-33.888-231.872-231.904z"  /></svg>'
         } else if (Choice === "RELOAD") {
             return '<img src="./img/bullet-alt.svg">'
         }
