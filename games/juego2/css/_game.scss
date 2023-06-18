@@ -124,7 +124,7 @@ $fw-bold: 700;
                 justify-content: center;
             }
 
-            svg {
+            .button-svg {
                 width: 25px;
                 height: auto;
                 fill: #eee;
@@ -150,6 +150,10 @@ $fw-bold: 700;
 
             &:focus {
                 outline: none;
+            }
+
+            &:disabled {
+                background-color: rgb(145, 113, 113);
             }
         }
 
@@ -260,6 +264,15 @@ $fw-bold: 700;
     .choice {
         top: -1.75rem;
         right: 8.5rem;
+
+        .action-cross {
+            fill: rgb(170, 45, 45);
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            top: .1rem;
+            left: 0rem;
+        }
     }
 }
 
@@ -291,4 +304,20 @@ $fw-bold: 700;
 
 
 
+// GAME END
+.game-section {
+    .game-over {
+        font-size: 3rem;
+        color: $clr-text-lv1;
+        transition: 2s;
+    }
 
+    
+}
+
+
+
+.game-end {
+    background-color: #232325;
+    display: none;
+}

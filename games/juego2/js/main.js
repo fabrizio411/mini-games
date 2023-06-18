@@ -11,9 +11,17 @@ const computerLife = document.getElementById("enemy-life");
 const computerBullets = document.getElementById("enemy-bullets");
 
 const gameSection = document.getElementById("game-section");
+const gameEndScreen = document.getElementById("game-end");
+const gameResult = document.getElementById("game-result");
+
+const difficultChosen = document.getElementById("difficulty-list");
+const playAgain = document.getElementById("play-again");
 
 const healthBarComputer = document.getElementById("life-bar-computer");
 const healthBarPlayer = document.getElementById("life-bar-player");
+
+const shootSVG = document.getElementById("shoot-svg");
+const reloadSVG = document.getElementById("reload-svg");
 
 
 
@@ -35,50 +43,82 @@ const ia = {
     magSize: 6,
 }
 
-const p_total_life = player.life;
+
+const p_total_life = player.life; // Para caluclos de barra de vida
 const c_total_life = ia.life;
 
-let difficulty = "HARD"
-let turn = -1;
+let difficulty = "RANDOM"
+let turn = 0;
+let winner = null;
+
+let svg_shoot = shootSVG.innerHTML;
+let svg_reload = reloadSVG.innerHTML;
 
 const options = ["RELOAD", "SHOOT", "SHIELD"];
 let ia_choice = "";
+
+// Base Content
+updateData("", "");
 
 
 function updateData(pChoice, iaChoice){
     turn++;
 
+    // Desabilitar boton disparar
     if (!canShoot(player)) shoot.disabled = true;
     else shoot.disabled = false
+    if (shoot.disabled) {
+        shootSVG.innerHTML = '<svg class="button-svg" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M777.856 280.192l-33.92-33.952-231.872 231.872-231.84-231.872-33.984 33.888 231.872 231.904-231.84 231.84 33.888 33.984 231.904-231.904 231.84 231.872 33.952-33.888-231.872-231.904z"  /></svg>'
+    } else shootSVG.innerHTML = svg_shoot
 
+    // Desabilitar boton recargar
     if (!canReload(player)) reload.disabled = true;
     else reload.disabled = false
+    if (reload.disabled) {
+        reloadSVG.innerHTML = '<svg class="button-svg" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M777.856 280.192l-33.92-33.952-231.872 231.872-231.84-231.872-33.984 33.888 231.872 231.904-231.84 231.84 33.888 33.984 231.904-231.904 231.84 231.872 33.952-33.888-231.872-231.904z"  /></svg>'
+    } else reloadSVG.innerHTML = svg_reload
     
-    computerChoice.innerHTML = choiceDisplay(iaChoice);
+    computerChoice.innerHTML = choiceDisplay(iaChoice, ia);
     computerLife.innerHTML = ia.life;
     computerBullets.innerHTML = ia.bullets + "/" + ia.magSize;
     if (!canReload(ia)) computerBullets.innerHTML += '<span class="isFull"> (FULL)</span>'; 
 
-    playerChoice.innerHTML = choiceDisplay(pChoice);
+    playerChoice.innerHTML = choiceDisplay(pChoice, player);
     playerLife.innerHTML = player.life;
     playerBullets.innerHTML = player.bullets + "/" + player.magSize; 
     if (!canReload(player)) playerBullets.innerHTML += '<span class="isFull"> (FULL)</span>';
 
+    // End Game display
     if (player.life <= 0 && ia.life <= 0) {
-        //
+        winner = "Tied";
+        setTimeout(() => {
+            gameSection.style.display = "none"
+            gameEndScreen.style.display = "block"
+            gameResult.innerHTML = 'Both Died'
+        }, 1500);
+        
     }
     else if (player.life <= 0) {
-        gameSection.innerHTML = "";
-        gameSection.innerHTML = '<h2 class="game-over lost">You Lost</h2>'
+        winner = ia;
+        setTimeout(() => {
+            gameSection.style.display = "none"
+            gameEndScreen.style.display = "block"
+            gameResult.innerHTML = 'You Lost'
+        }, 1500);
+
     } 
     else if (ia.life <= 0) {
-        gameSection.innerHTML = "";
-        gameSection.innerHTML = '<h2 class="game-over win">You Win</h2>'
+        winner = player;
+        setTimeout(() => {
+            gameSection.style.display = "none"
+            gameEndScreen.style.display = "block"
+            gameResult.innerHTML = 'You Win'
+        }, 1500);
+
     }
 
-
-    healthBarManage(ia, c_total_life)
-    healthBarManage(player, p_total_life)
+    healthBarManage(ia, c_total_life);
+    healthBarManage(player, p_total_life);
 
     ia_choice = iaChoiceByLevel(difficulty);
 }
@@ -98,7 +138,7 @@ function iaChoiceByLevel(difficulty) {
         if (!canShoot(ia)) return "RELOAD";
         let opt = options[Math.floor(Math.random() * options.length)];
         let cont = 0;
-        while ((cont < 2 && opt === "SHOOT" && ia.bullets < round((ia.life/player.damage)) >= 2) || ia.bullets == ia.magSize) {
+        while (cont < 2 && ((opt === "SHOOT" && ia.bullets < parseInt((ia.life/player.damage)) >= 2) || ia.bullets <= ia.magSize)) {
             opt = options[Math.floor(Math.random() * options.length)];
             cont++;
         }
@@ -118,59 +158,79 @@ function iaChoiceByLevel(difficulty) {
         return iaChoiceByLevel(Math.floor(Math.random() * 10)) //x10 es por la dificultad RANDOM que va de 6 en adelante... 
     }
     
-    // HARD
+    // HARD 
     // Recarga siempre en el turno 0
     // Nunca intenta disparar si no tiene balas
     // Nunca intenta recargar si tiene todas las balas
     else if (difficulty === 4 || difficulty === "HARD") {
-        if (turn == 0) return "RELOAD";
+        if (turn <= 1) return "RELOAD";
         if (!canShoot(ia)) {
             let opt = options[Math.floor(Math.random() * options.length)];
-            while (opt == "SHOOT") { opt = options[Math.floor(Math.random() * options.length)]; }
+            while (opt === "SHOOT") { opt = options[Math.floor(Math.random() * options.length)]; }
             return opt;
         }
         if (!canReload(ia)) {
             let opt = options[Math.floor(Math.random() * options.length)];
-            while (opt == "RELOAD") { opt = options[Math.floor(Math.random() * options.length)]; }
+            while (opt === "RELOAD") { opt = options[Math.floor(Math.random() * options.length)]; }
             return opt;
         }
         return options[Math.floor(Math.random() * options.length)];
     }
+    
     // IMPOSSIBLE
-    else if (difficulty == 5 || difficulty == "IMPOSSIBLE") {
-        if (turn == 0) return "RELOAD";
+    // Recarga siempre en el turno 0
+    // Si elije estrategia 0, dependiendo del turno usa SHIELD o SHOOT
+    // Nunca intenta disparar si no tiene balas
+    // Nunca intenta recargar si tiene todas las balas 
+    else if (difficulty === 5 || difficulty === "IMPOSSIBLE") {
+        if (turn === 1) return "RELOAD";
+        strat = Math.floor(Math.random() * 2);
+        if (strat === 0){
+            if (turn == 2) return "RELOAD";
+            if (turn%2 == 0 && canShoot(player)) return "SHIELD";
+            else if (canShoot(ia)) return "SHOOT";
+        }
         if (!canShoot(ia)) {
             let opt = options[Math.floor(Math.random() * options.length)];
-            while (opt == "SHOOT") { opt = options[Math.floor(Math.random() * options.length)]; }
+            while (opt === "SHOOT") { opt = options[Math.floor(Math.random() * options.length)]; }
+            if (opt === "SHIELD" && !canShoot(player)) opt = "RELOAD";
             return opt;
         }
         if (!canReload(ia)) {
             let opt = options[Math.floor(Math.random() * options.length)];
-            while (opt == "RELOAD") { opt = options[Math.floor(Math.random() * options.length)]; }
+            while (opt === "RELOAD") { opt = options[Math.floor(Math.random() * options.length)]; }
+            if (opt === "SHIELD" && !canShoot(player)) opt = "SHOOT";
             return opt;
         }
         return options[Math.floor(Math.random() * options.length)];
     }
+
     // RANDOM
-    else if (difficulty >= 6 || difficulty == "RANDOM") {
+    else if (difficulty >= 6 || difficulty === "RANDOM") {
         return options[Math.floor(Math.random() * options.length)];
     }
 }
 
-function choiceDisplay(Choice) {
-    if (turn === 0) return ""
+function choiceDisplay(Choice, who) {
+    // Display de imagen de la eleccion
+    if (turn === 1) return "";
     else {
-        if (Choice === "SHOOT") {
-            return '<img src="./img/crosshair-alt.svg"></img>'
+        if (Choice === "SHOOT" && !canShoot(who)) {
+            return '<img src="./img/crosshair-alt.svg"> <svg class="action-cross" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M777.856 280.192l-33.92-33.952-231.872 231.872-231.84-231.872-33.984 33.888 231.872 231.904-231.84 231.84 33.888 33.984 231.904-231.904 231.84 231.872 33.952-33.888-231.872-231.904z"  /></svg>'
+        } else if (Choice === "SHOOT") {
+            return '<img src="./img/crosshair-alt.svg">';
         } else if (Choice === "SHIELD") {
-            return '<img src="./img/shield-alt.svg"></img>'
+            return '<img src="./img/shield-alt.svg">';
+        } else if (Choice === "RELOAD" && who.magSize === who.bullets) {
+            return '<img src="./img/bullet-alt.svg"> <svg class="action-cross" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M777.856 280.192l-33.92-33.952-231.872 231.872-231.84-231.872-33.984 33.888 231.872 231.904-231.84 231.84 33.888 33.984 231.904-231.904 231.84 231.872 33.952-33.888-231.872-231.904z"  /></svg>'
         } else if (Choice === "RELOAD") {
-            return '<img src="./img/bullet-alt.svg"></img>'
+            return '<img src="./img/bullet-alt.svg">'
         }
     }
 }
 
 function healthBarManage(whosLife, totalLife) {
+    // Calculo de la barra de vida y display
     let width = whosLife.life * 100 / totalLife
     if (whosLife === ia) healthBarComputer.style.width = `${width}%`
     if (whosLife === player) healthBarPlayer.style.width = `${width}%`
@@ -187,9 +247,13 @@ function canReload (whoReloads) {
 }
 
 
-
-// Base Content
-updateData("", "");
+// TERMINAR ESTO
+playAgain.addEventListener("click", () => { 
+    //difficulty = difficultChosen.get
+    turn = 0;
+    winner = null;
+    updateData("", "");
+})
 
 
 // Get User button input
@@ -246,18 +310,18 @@ shield.addEventListener("click", () => {
 
 
 
+
+
 /*******************************************
-v -> vida / b -> bullet / ~ -> no pasa nada
+User: reload - IA: reload -> user.balas+=1; IA.balas+=1
+User: reload - IA: shoot  -> user.balas+=1; user.vida-=daño; IA.balas-=1
+User: reload - IA: shield -> user.balas+1;
 
-reload - reload -> user:b+1, IA:b+1
-reload - shoot  -> user:b+1&v-1, Ia:b-1
-reload - shield -> user:b+1, IA:~
+User: shoot - IA: reload  -> user.balas-=1; IA.vida-=daño; IA.balas+=1
+User: shoot - IA: shoot   -> user.balas-=1; user.vida-=daño; IA.balas-=1; IA.vida-=daño
+User: shoot - IA: shield  -> user.balas-=1;
 
-shoot - reload  -> user:v-1, IA:v-1&b+1
-shoot - shoot   -> user:b-1&v-1, IA:b-1&v-1
-shoot - shield  -> user:b-1, IA:~
-
-shield - reload -> user:~, IA:b+1
-shield - shoot  -> user:~, IA:v-1
-shield - shield -> user:~, IA:~
+User: shield - IA: reload -> IA.balas+=1
+User: shield - IA: shoot  -> IA.balas-=1
+User: shield - IA: shield -> // Nothing
 *******************************************/

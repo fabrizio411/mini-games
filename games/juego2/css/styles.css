@@ -102,7 +102,7 @@ body {
   align-items: center;
   justify-content: center;
 }
-.game-section .game-buttons button svg {
+.game-section .game-buttons button .button-svg {
   width: 25px;
   height: auto;
   fill: #eee;
@@ -123,6 +123,9 @@ body {
 }
 .game-section .game-buttons button:focus {
   outline: none;
+}
+.game-section .game-buttons button:disabled {
+  background-color: rgb(145, 113, 113);
 }
 
 .enemy-status-box, .player-status-box {
@@ -190,6 +193,14 @@ body {
   top: -1.75rem;
   right: 8.5rem;
 }
+.enemy-layout .choice .action-cross {
+  fill: rgb(170, 45, 45);
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  top: 0.1rem;
+  left: 0rem;
+}
 
 .enemy-layout, .player-layout {
   padding: 2rem;
@@ -207,6 +218,17 @@ body {
 .enemy-layout .game-image-box .choice img, .player-layout .game-image-box .choice img {
   width: 5rem;
   opacity: 0.8;
+}
+
+.game-section .game-over {
+  font-size: 3rem;
+  color: #fdfeff;
+  transition: 2s;
+}
+
+.game-end {
+  background-color: #232325;
+  display: none;
 }
 
 main {
