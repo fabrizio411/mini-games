@@ -1,16 +1,39 @@
+$clr-header-bg: #27282b;
+$clr-header-font: #7c7c7c;
+$clr-sidebar-bg: #232325;
+$clr-infobar-bg: #343536;
+
+$clr-text-lv1: #fdfeff;
+$clr-text-lv2: #d3d3d3;
+$clr-text-lv3: #969799;
+$clr-text-lv4: #6d6d6d;
+$clr-text-lv5: #474747;
+
+$clr-game-bg: radial-gradient( $clr-text-lv4, $clr-header-bg,);
+
+$clr-health-bar: rgb(202, 49, 49);
+$clr-exp-bar: rgb(245, 235, 99);
+
+$fw-light: 300;
+$fw-regular: 400;
+$fw-semi-bold: 500;
+$fw-bold: 700;
+
+
+
 .game-section {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid red;
     height: 100%;
+    background: $clr-game-bg;
 
     .game-health-bar {
         width: 100%;  
         height: .5rem;  
         border-radius: 1rem;
-        background-color: red;  
+        background-color: $clr-health-bar  
     }
 
     .bullets {
@@ -20,57 +43,144 @@
     }
 
 
-
-    .enemy-layout {
+    .enemy-layout, .player-layout {
         display: flex;
         gap: 2rem;
         align-items: flex-start;
+    }
 
+    .game-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        width: 62%;
+        margin-top: 1rem;
+        
+        button {
+            padding: 3rem 4rem;
+            border: none;
+            border-radius: 1rem;
+            box-shadow:  2px 2px 20px #272729,
+             -2px -2px 20px #7c7d7e;
+            background-color: $clr-text-lv3;
 
-        .enemy-status-box {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            gap: .25rem;
-            width: 10rem;
-            border: 2px solid #555;
-            padding: .5rem 1rem;
-
-            .name {
-                font-weight: 600;
-                font-synthesis: 1.1rem;
+            &:hover {
+                background: linear-gradient(145deg, #5f6061, #bdbfc2);
             }
 
-            .life-info {
-                text-align: right;
-
+            &:active {
+                box-shadow: none;
+                background: linear-gradient(145deg, #3c3c3d, #676869);
             }
 
-            .bullets {
-                display: flex;
-                align-items: center;
-                text-align: right;
+            &:disabled {
+                background: linear-gradient(145deg, #3d3d41, #5f4a4a);
             }
-
-            .health-related {
-                display: flex;
-                flex-direction: column-reverse;
-            }
-
-            
-            
         }
     }
 
+
+}
+
+
+
+
+
+.enemy-status-box, .player-status-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 15rem;
+    padding: 1rem 1.5rem;
+    border: .25rem solid $clr-sidebar-bg;
+    border-radius: .5rem;
+    background-color: $clr-infobar-bg;
+
+    .name {
+        font-weight: $fw-bold;
+        font-size: 1.1rem;
+        margin-bottom: .5rem;
+        color: $clr-text-lv1;
+    }
+
+    .life-info {
+        text-align: right;
+        color: $clr-text-lv3;
+        padding-bottom: .05rem;
+    }
+
+    .bullets {
+        display: flex;
+        align-items: center;
+        text-align: right;
+        padding-left: .25rem;
+
+        svg {
+            fill: $clr-text-lv3;
+        }
+
+        span {
+            font-weight: $fw-semi-bold;
+            padding-left: .2rem;
+            color: $clr-text-lv2;
+        }
+    }
+
+    .health-related {
+        display: flex;
+        flex-direction: column-reverse;
+
+        .life-info {
+            font-size: .9rem;
+            padding-right: .25rem;
+        }
+    }
 }
 
 
 .player-layout {
-    display: flex;
-    margin-top: 5rem;
+    margin-right: 10rem;
+    .player-status-box {
+        align-self: flex-end;
+    }
 
-    .player-status {
-        width: 10rem;
+    .choice {
+        top: 0;
+        right: -0.75rem;
+    }
+}
+
+.enemy-layout {
+    margin-left: 10rem;
+    .game-image {
+        transform: scaleX(-1);
+    }
+
+    .choice {
+        top: -1.75rem;
+        right: 8.5rem;
+    }
+}
+
+
+.enemy-layout, .player-layout {
+    padding: 2rem;
+    padding-top: 0;
+    .game-image-box {
+        position: relative;
+
+        .game-image {
+            height: 12rem;
+        }
+
+        .choice {
+            position: absolute;
+
+            img {
+                width: 5rem;
+                opacity: .8;
+            }
+        }
     }
 }
 
@@ -78,20 +188,6 @@
 
 
 
-svg, img {
-    max-width: 10rem;
-}
 
 
-.game-buttons {
-    padding-top: 3rem;
-    display: flex;
-    gap: 1rem;
-    
-    button {
-        padding: 2rem;
-        border: none;
-        border-radius: 1rem;
-        box-shadow: 1px 1px 2px #333;
-    }
-}
+

@@ -31,8 +31,21 @@ let damage = 50;
 
 const options = ["RELOAD", "SHOOT", "SHIELD"];
 let ia_choice = "";
-let turno = -1;
+let turn = -1;
 
+
+function choiceDisplay(Choice) {
+    if (turn === 0) return ""
+    else {
+        if (Choice === "SHOOT") {
+            return '<img src="./img/crosshair-alt.svg"></img>'
+        } else if (Choice === "SHIELD") {
+            return '<img src="./img/shield-alt.svg"></img>'
+        } else if (Choice === "RELOAD") {
+            return '<img src="./img/bullet-alt.svg"></img>'
+        }
+    }
+}
 
 
 function iaChoiceByLevel(difficulty) {
@@ -44,7 +57,7 @@ function iaChoiceByLevel(difficulty) {
         return options[Math.floor(Math.random() * options.length)];
     }
     else if (difficulty == 2 || difficulty == "HARD") {
-        if (turno == 0) return "RELOAD";
+        if (turn == 0) return "RELOAD";
         if (!canShoot(ia)) {
             let opt = options[Math.floor(Math.random() * options.length)];
             while (opt == "SHOOT") { opt = options[Math.floor(Math.random() * options.length)]; }
@@ -55,16 +68,16 @@ function iaChoiceByLevel(difficulty) {
 }
 
 function updateData(pChoice, iaChoice){
-    turno++;
+    turn++;
 
     if (!canShoot(player)) shoot.disabled = true;
     else shoot.disabled = false
     
-    computerChoice.innerHTML = iaChoice;
+    computerChoice.innerHTML = choiceDisplay(iaChoice);
     computerLife.innerHTML = ia.life;
     computerBullets.innerHTML = ia.bullets; 
 
-    playerChoice.innerHTML = pChoice;
+    playerChoice.innerHTML = choiceDisplay(pChoice);
     playerLife.innerHTML = player.life;
     playerBullets.innerHTML = player.bullets;
 
@@ -73,11 +86,11 @@ function updateData(pChoice, iaChoice){
     }
     else if (player.life <= 0) {
         gameSection.innerHTML = "";
-        gameSection.innerHTML = "<h2>You Lost</h2>"
+        gameSection.innerHTML = '<h2 class="game-over lost">You Lost</h2>'
     } 
     else if (ia.life <= 0) {
         gameSection.innerHTML = "";
-        gameSection.innerHTML = "<h2>You Win</h2>"
+        gameSection.innerHTML = '<h2 class="game-over win">You Win</h2>'
     }
 
     ia_choice = iaChoiceByLevel("HARD")
