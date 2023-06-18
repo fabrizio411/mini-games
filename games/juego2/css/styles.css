@@ -26,12 +26,28 @@ body {
 }
 .game-section .game-health-bar {
   width: 100%;
-  height: 0.5rem;
+  height: 0.6rem;
   border-radius: 1rem;
+  border: 2px solid rgb(43, 42, 42);
+}
+.game-section .game-health-bar .bar-fill {
+  border-radius: 1rem;
+  height: 100%;
+  width: 100%;
   background-color: rgb(202, 49, 49);
+}
+.game-section .game-health-bar .bar-empty {
+  border-radius: 1rem;
+  height: 100%;
+  width: 0%;
+  background-color: transparent;
 }
 .game-section .bullets svg {
   max-width: 1.5rem;
+}
+.game-section .bullets .isFull {
+  color: rgb(187, 119, 80);
+  font-weight: 700;
 }
 .game-section .enemy-layout, .game-section .player-layout {
   display: flex;
@@ -45,22 +61,66 @@ body {
   width: 62%;
   margin-top: 1rem;
 }
+.game-section .game-buttons .noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.game-section .game-buttons button, .game-section .game-buttons button span {
+  transition: 200ms;
+}
 .game-section .game-buttons button {
-  padding: 3rem 4rem;
+  width: 200px;
+  height: 80px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: red;
   border: none;
-  border-radius: 1rem;
-  box-shadow: 2px 2px 20px #272729, -2px -2px 20px #7c7d7e;
-  background-color: #969799;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+  background: #696969;
+}
+.game-section .game-buttons button .btn-text {
+  transform: translateX(45px);
+  color: white;
+  font-weight: bold;
+}
+.game-section .game-buttons button .icon {
+  position: absolute;
+  padding-left: 10px;
+  border-left: 1px solid #d3d3d3;
+  transform: translateX(145px);
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.game-section .game-buttons button svg {
+  width: 25px;
+  fill: #eee;
 }
 .game-section .game-buttons button:hover {
-  background: linear-gradient(145deg, #5f6061, #bdbfc2);
+  background: #464545;
 }
-.game-section .game-buttons button:active {
-  box-shadow: none;
-  background: linear-gradient(145deg, #3c3c3d, #676869);
+.game-section .game-buttons button:hover .btn-text {
+  color: transparent;
 }
-.game-section .game-buttons button:disabled {
-  background: linear-gradient(145deg, #3d3d41, #5f4a4a);
+.game-section .game-buttons button:hover .icon {
+  width: 150px;
+  border-left: none;
+  transform: translateX(20px);
+}
+.game-section .game-buttons button:hover .icon svg {
+  width: 50px;
+}
+.game-section .game-buttons button:focus {
+  outline: none;
 }
 
 .enemy-status-box, .player-status-box {
