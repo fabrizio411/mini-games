@@ -1,0 +1,62 @@
+.game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.game button {
+    padding: 2rem;
+    border: none;
+    border-radius: 1rem;
+    color: #666;
+    box-shadow: 1px 1px 2px #333;
+}
+
+.game button:active {
+    box-shadow: none;
+}
+
+.game button:disabled {
+    background-color: #ffdecf;
+}
+
+
+.game-status {
+    display: flex;
+    gap: 10rem;
+}
+
+.display {
+    line-height: 1.5rem;
+}
+.display u {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+
+
+
+.buttons {
+    padding-top: 3rem;
+    display: flex;
+    gap: 1rem;
+    border: none;
+}
+
+#dis:hover {
+    cursor: url("../img/crosshair.png"), auto;
+}
+#esc:hover {
+    cursor: url("../img/shield.png"), auto;
+}
+#rec:hover {
+    cursor: url("../img/bullets.png"), auto;
+}
+
+
+#dis:disabled:active {
+    box-shadow: 1px 1px 2px #333;
+}

@@ -7,6 +7,10 @@ precisas recargar para disparar
 escuro protege del disparo
 
 
+futuro:
+- mejoras:
+    - tirar escudo mientras recargas
+
 modo:
 Facil- Todo aleatorio
 Medio- Recarga primer turno
