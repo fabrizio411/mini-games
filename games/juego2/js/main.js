@@ -12,13 +12,20 @@ const computerBullets = document.getElementById("enemy-bullets");
 
 const gameSection = document.getElementById("game-section");
 
+const healthBarComputer = document.getElementById("life-bar-computer");
+const healthBarPlayer = document.getElementById("life-bar-player");
+
+
+
+
+
 
 // User:
 const player = {
     life: 200,
     bullets: 0,
     damage: 50,
-    magSize: 3,
+    magSize: 6,
 }
 // IA:
 const ia = {
@@ -28,7 +35,10 @@ const ia = {
     magSize: 6,
 }
 
-let difficulty = "MEDIUM"
+const p_total_life = player.life;
+const c_total_life = ia.life;
+
+let difficulty = "HARD"
 let turn = -1;
 
 const options = ["RELOAD", "SHOOT", "SHIELD"];
@@ -66,6 +76,10 @@ function updateData(pChoice, iaChoice){
         gameSection.innerHTML = '<h2 class="game-over win">You Win</h2>'
     }
 
+
+    healthBarManage(ia, c_total_life)
+    healthBarManage(player, p_total_life)
+
     ia_choice = iaChoiceByLevel(difficulty);
 }
 
@@ -79,37 +93,45 @@ function iaChoiceByLevel(difficulty) {
 
     // VERY EASY
     // Si no tiene balas recarga siempre
-    // Es mas probable que use RELOAD o SHIELD 
+    // Es mas probable que use RELOAD o SHIELD que SHOOT si el player no puede matar a la IA en 2 tiros
     else if (difficulty === 1 || difficulty === "VERY-EASY") { 
         if (!canShoot(ia)) return "RELOAD";
         let opt = options[Math.floor(Math.random() * options.length)];
         let cont = 0;
-        while (cont < 3 && opt === "SHOOT" && ia.bullets < round((ia.life/player.damage)/2)) {
+        while ((cont < 2 && opt === "SHOOT" && ia.bullets < round((ia.life/player.damage)) >= 2) || ia.bullets == ia.magSize) {
             opt = options[Math.floor(Math.random() * options.length)];
             cont++;
         }
         return opt;
     }
+
     // EASY
+    // Si no tiene balas recarga siempre
     else if (difficulty === 2 || difficulty === "EASY") {
         if (!canShoot(ia)) return "RELOAD";
         return options[Math.floor(Math.random() * options.length)];
     }
+
     // MEDIUM
+    // Varia entre dificultades con mayor probabilidad de ser random
     else if (difficulty === 3 || difficulty === "MEDIUM") {
         return iaChoiceByLevel(Math.floor(Math.random() * 10)) //x10 es por la dificultad RANDOM que va de 6 en adelante... 
     }
+    
     // HARD
+    // Recarga siempre en el turno 0
+    // Nunca intenta disparar si no tiene balas
+    // Nunca intenta recargar si tiene todas las balas
     else if (difficulty === 4 || difficulty === "HARD") {
-        if (turn === 0) return "RELOAD";
+        if (turn == 0) return "RELOAD";
         if (!canShoot(ia)) {
             let opt = options[Math.floor(Math.random() * options.length)];
-            while (opt === "SHOOT") { opt = options[Math.floor(Math.random() * options.length)]; }
+            while (opt == "SHOOT") { opt = options[Math.floor(Math.random() * options.length)]; }
             return opt;
         }
         if (!canReload(ia)) {
             let opt = options[Math.floor(Math.random() * options.length)];
-            while (opt === "RELOAD") { opt = options[Math.floor(Math.random() * options.length)]; }
+            while (opt == "RELOAD") { opt = options[Math.floor(Math.random() * options.length)]; }
             return opt;
         }
         return options[Math.floor(Math.random() * options.length)];
@@ -146,6 +168,12 @@ function choiceDisplay(Choice) {
             return '<img src="./img/bullet-alt.svg"></img>'
         }
     }
+}
+
+function healthBarManage(whosLife, totalLife) {
+    let width = whosLife.life * 100 / totalLife
+    if (whosLife === ia) healthBarComputer.style.width = `${width}%`
+    if (whosLife === player) healthBarPlayer.style.width = `${width}%`
 }
 
 function canShoot (whoShoots) {
@@ -219,7 +247,7 @@ shield.addEventListener("click", () => {
 
 
 /*******************************************
-v -> vida / b -> bullet
+v -> vida / b -> bullet / ~ -> no pasa nada
 
 reload - reload -> user:b+1, IA:b+1
 reload - shoot  -> user:b+1&v-1, Ia:b-1

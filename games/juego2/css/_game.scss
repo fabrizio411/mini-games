@@ -27,6 +27,9 @@ $fw-bold: 700;
     justify-content: center;
     align-items: center;
     height: 100%;
+    // background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/aa15ff7d-d333-4bf9-b115-95e18f63fe91/d5ynr9c-33aeebd0-1cd8-45d9-86fc-8431aa114534.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2FhMTVmZjdkLWQzMzMtNGJmOS1iMTE1LTk1ZTE4ZjYzZmU5MVwvZDV5bnI5Yy0zM2FlZWJkMC0xY2Q4LTQ1ZDktODZmYy04NDMxYWExMTQ1MzQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.drpgYmhn1x05leYjcLxQtnSJDwKa_DciUUDi4-LYJXA");
+    // background-repeat: no-repeat;
+    // background-size: cover;
     background: $clr-game-bg;
 
     .game-health-bar {
@@ -40,12 +43,13 @@ $fw-bold: 700;
             height: 100%;
             width: 100%;
             background-color: $clr-health-bar;
+            transition: .75s;
         }
 
         .bar-empty {
             border-radius: 1rem;
             height: 100%;
-            width: 0%;
+            width: auto;
             background-color: transparent;
         }
     }
@@ -122,6 +126,7 @@ $fw-bold: 700;
 
             svg {
                 width: 25px;
+                height: auto;
                 fill: #eee;
             }
 
